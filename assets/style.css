@@ -1,0 +1,6 @@
+.customHeader {
+  text-align: center;
+  background-image: linear-gradient(to right, blue, navy);
+  color: white;
+  font-weight: bold;
+}
