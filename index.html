@@ -23,16 +23,36 @@
         <h1 class="display-4 customHeader">Weather Dashboard</h1>
       </div>
     </header>
-    <div class="card" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title">Search for a City:</h5>
-        <input type="text" class="form-control userInput" placeholder="Type City Name Here" >
-    </div>
+    <div class="row">
+      <div class="card col-3">
+        <div class="card-body">
+          <h5 class="card-title">Search for a City:</h5>
+          <input
+            type="text"
+            class="form-control userInput"
+            placeholder="Type City Name Here"
+          />
+        </div>
         <a href="#" class="btn btn-primary searchBtn">Search</a>
         <a href="#" class="btn btn-danger clearBtn">Clear Searches</a>
-        <hr>
+        <hr />
         <ul class="list-group" id="city-list"></ul>
-        
+      </div>
+      <div class="col-9">
+        <div class="jumbotron currentDay">
+          <h1 id="city-name">City Name (date)</h1>
+          <h2 id="current-temp">Temp:</h2>
+          <h2 id="current-wind">Wind:</h2>
+          <h2 id="current-humidity">Humidity:</h2>
+          <h2 id="current-uv">UV index:</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1 weather-card" id="day-1"></div>
+          <div class="col-md-2 weather-card" id="day-2"></div>
+          <div class="col-md-2 weather-card" id="day-3"></div>
+          <div class="col-md-2 weather-card" id="day-4"></div>
+          <div class="col-md-2 weather-card" id="day-5"></div>
+        </div>
       </div>
     </div>
 

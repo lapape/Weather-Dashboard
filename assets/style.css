@@ -4,3 +4,17 @@
   color: white;
   font-weight: bold;
 }
+
+.weather-card {
+  background-color: navy;
+  color: white;
+  height: 200px;
+  border: 10px, solid, black;
+  margin: 10px;
+}
+
+.list-group li {
+  background-color: darkblue;
+  color: white;
+  margin: 5px;
+}
