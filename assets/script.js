@@ -1,15 +1,20 @@
+//variable that is an empty array or parses data from local storage into an array
 var searchedCities = JSON.parse(localStorage.getItem("cities")) || [];
 var userInput = $(".userInput");
 var citiesUl = $("#city-list");
 var city;
 
+//loop through array of searched cities and makes and appends a new li for each city in the array
 for (var i = 0; i < searchedCities.length; i++) {
   var newLi = document.createElement("LI");
 
   newLi.textContent = searchedCities[i];
   citiesUl.append(newLi);
 }
+
+//function that checks if user response is already in the array, if not moves on to add that city to the array
 $(".searchBtn").on("click", function () {
+  $("img").show();
   city = userInput.val();
   if (city === "") {
     alert("Error, must enter a city!");
@@ -26,10 +31,12 @@ $(".searchBtn").on("click", function () {
         newLi.textContent = searchedCities[i];
         citiesUl.append(newLi);
 
+        //variable that is a specific URL for the current weather of the city the user searched
         var currentDayUrl =
           "https://api.openweathermap.org/data/2.5/weather?q=" +
           city +
           "&units=imperial&appid=0d0b2b0910b73328162f180c9a8a151c";
+        //function that fetches weather data and plugs the data into the text content of the current day
         fetch(currentDayUrl)
           .then(function (response) {
             return response.json();
@@ -44,17 +51,20 @@ $(".searchBtn").on("click", function () {
             );
           });
 
+        //variable for the URL for the 5 day forecast of the city the user searched
         var fiveDayUrl =
           "https://api.openweathermap.org/data/2.5/forecast?q=" +
           city +
           "&units=imperial&appid=f1abc546bb5ca491ffa796b40d6c8ba4";
+
+        //function that fetches the data for the 5 day forecast and parses it into an array of objects
         fetch(fiveDayUrl)
           .then(function (response) {
             return response.json();
           })
           .then(function (data) {
             console.log(data);
-
+            //plugs data from fetch into text content of the 5 weather cards
             $("#day-1")
               .children()
               .eq(0)
@@ -186,12 +196,16 @@ $(".searchBtn").on("click", function () {
   }
 });
 
+//clear button that deletes local storage and reloads the page so the list items are not displayed
 $(".clearBtn").on("click", function () {
   localStorage.clear();
   location.reload();
 });
 
+//function that allows users to click on previous searches with the same functionality of the "search" button
+
 $("#city-list").on("click", "li", function () {
+  $("img").show();
   var city = this.textContent;
   console.log(this.textContent);
   var currentDayUrl =
